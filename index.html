@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verilog 與 DE0-Nano 硬體實作教學講稿</title>
+    <title>Verilog 與 DE0-Nano 硬體實作教學</title>
     <style>
         :root {
             --primary-color: #2563eb;
@@ -70,7 +70,6 @@
             margin-bottom: 15px;
         }
 
-        /* 程式碼區塊 */
         code {
             background-color: #f1f5f9;
             color: #db2777;
@@ -95,7 +94,6 @@
             padding: 0;
         }
 
-        /* 表格優化 */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -119,7 +117,6 @@
             background-color: #f1f5f9;
         }
 
-        /* 提示框設計 */
         .alert {
             padding: 16px 20px;
             border-radius: 8px;
@@ -138,7 +135,6 @@
             color: #92400e;
         }
 
-        /* 步驟卡片設計 */
         .step-container {
             display: flex;
             flex-direction: column;
@@ -187,7 +183,7 @@
             border-top: 1px solid var(--border-color);
         }
 
-        /* ===== 新增：教學影片區塊樣式 ===== */
+        /* 教學影片區塊樣式 */
         .video-section {
             background: white;
             padding: 30px;
@@ -195,16 +191,6 @@
             border-radius: 12px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             border: 1px solid var(--border-color);
-        }
-
-        .video-section h2 {
-            color: var(--secondary-color);
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 12px;
-            margin-top: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .video-thumb-link {
@@ -305,15 +291,10 @@
             transform: translateY(-1px);
         }
 
-        .video-link-btn svg {
-            flex-shrink: 0;
-        }
-
         .video-caption {
             color: #64748b;
             font-size: 0.92em;
         }
-        /* ===== 新增區塊結束 ===== */
     </style>
 </head>
 <body>
@@ -323,14 +304,13 @@
     <p>DE0-Nano 開發板教學講稿</p>
 </header>
 
-<!-- ===== 新增：教學影片區塊 ===== -->
 <section class="video-section">
     <h2>🎬 教學影片參考</h2>
     <p>以下為本次實驗對應的完整教學影片，建議在操作前先完整觀看一遍，有助於理解各步驟的實際操作流程。</p>
 
-    <a class="video-thumb-link" href="https://youtu.be/Pm7PWNNYpWo" target="_blank" rel="noopener noreferrer">
-        <img src="https://img.youtube.com/vi/Pm7PWNNYpWo/maxresdefault.jpg" alt="Verilog 與 DE0-Nano 硬體實作教學影片縮圖"
-             onerror="this.src='https://img.youtube.com/vi/Pm7PWNNYpWo/hqdefault.jpg'">
+    <a class="video-thumb-link" href="https://youtu.be/vOJLs4zH5hc" target="_blank" rel="noopener noreferrer">
+        <img src="https://img.youtube.com/vi/vOJLs4zH5hc/maxresdefault.jpg" alt="Verilog 與 DE0-Nano 硬體實作教學影片縮圖"
+             onerror="this.src='https://img.youtube.com/vi/vOJLs4zH5hc/hqdefault.jpg'">
         <div class="video-play-overlay">
             <div class="video-play-btn">
                 <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
@@ -342,16 +322,15 @@
     </a>
 
     <div class="video-link-row">
-        <a class="video-link-btn" href="https://youtu.be/Pm7PWNNYpWo" target="_blank" rel="noopener noreferrer">
+        <a class="video-link-btn" href="https://youtu.be/vOJLs4zH5hc" target="_blank" rel="noopener noreferrer">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
             </svg>
             在 YouTube 開啟影片
         </a>
-        <span class="video-caption">🔗 https://youtu.be/Pm7PWNNYpWo</span>
+        <span class="video-caption">🔗 https://youtu.be/vOJLs4zH5hc</span>
     </div>
 </section>
-<!-- ===== 新增區塊結束 ===== -->
 
 <section>
     <h2>💻 (1) Verilog 資料處理模型 (Data Flow Model)</h2>
@@ -378,12 +357,8 @@ endmodule</code></pre>
 <section>
     <h2>🔌 (3) 腳位指派與硬體驗證</h2>
     <p>這是最關鍵的步驟，我們需要將軟體定義的變數連接到 DE0-Nano 實體腳位上。</p>
-    
-    
 
     <h3>📌 腳位指派參考表</h3>
-    <p>根據開發板技術規格手冊，以下是我們常用的硬體元件腳位對應：</p>
-    
     <table>
         <thead>
             <tr>
@@ -446,10 +421,7 @@ endmodule</code></pre>
         3. 關閉 Pin Planner，並重新點擊 <strong>Start Compilation</strong> 進行完整編譯。
     </div>
 
-    
-
     <h3>🚀 燒錄五大詳細步驟</h3>
-    
     <div class="step-container">
         <div class="step-card">
             <div class="step-title">Step 1. 全編譯 (Full Compilation)</div>
@@ -465,8 +437,6 @@ endmodule</code></pre>
             <div class="step-title">Step 3. 偵測晶片 (Auto Detect)</div>
             <div class="step-desc">點擊左側 Auto Detect，選擇 <code>EP4CE22</code>。你會在視窗中看到一塊晶片的圖示。</div>
         </div>
-        
-        
 
         <div class="step-card">
             <div class="step-title">Step 4. 掛載與勾選檔案</div>
@@ -486,11 +456,11 @@ endmodule</code></pre>
     </div>
     
     <div class="alert alert-warning">
-        <strong>⚠️ 錄製與除錯提醒 (Troubleshooting)：</strong>
+        <strong>⚠️ 除錯提醒 (Troubleshooting)：</strong>
         <ul style="margin-bottom: 0; margin-top: 8px;">
-            <li><strong>Hardware Setup 是空的：</strong>請同學檢查 USB 線是否插好，或重新安裝 USB-Blaster 驅動程式。</li>
+            <li><strong>Hardware Setup 是空的：</strong>請檢查 USB 線是否插好，或重新安裝 USB-Blaster 驅動。</li>
             <li><strong>Start 按鈕是灰色的：</strong>通常是因為忘記勾選 <code>Program/Configure</code> 框。</li>
-            <li><strong>燈號反應不對：</strong>回頭檢查 Pin Planner 是否漏按了 Enter 導致腳位沒存進去。</li>
+            <li><strong>燈號反應不對：</strong>檢查 Pin Planner 是否漏按了 Enter 導致腳位沒存進去。</li>
         </ul>
     </div>
 
@@ -499,7 +469,7 @@ endmodule</code></pre>
 </section>
 
 <div class="footer">
-    <p>© 2026 數位邏輯實驗教學講稿輔助系統 - 參考資料來源：腳位表.docx</p>
+    <p>© 2026 數位邏輯實驗教學講稿輔助系統</p>
 </div>
 
 </body>
